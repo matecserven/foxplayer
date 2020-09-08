@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+.logo, .trackInfo, .playList, .trackList, .controlPanel {
+  @apply border-black border-solid border;
+  @apply w-full;
+}
+
+.mainContainer {
+  @apply mx-auto max-w-screen-lg w-9/12 h-auto;
+  @apply flex flex-col flex-wrap;
+  @apply border-black border-solid border;
+}
+
+.logo, .trackInfo {
+  @apply h-24;
+}
+
+.playList, .trackList {
+  @apply h-64 h-;
+}
+
+.controlPanel {
+  @apply w-full h-24;
+}
+
+@screen sm {
+  .mainContainer {
+    @apply flex-row;
+  }
+
+  .logo, .trackInfo, .playList, .trackList {
+    @apply w-1/2;
+  }
+}

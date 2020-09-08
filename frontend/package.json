@@ -1,0 +1,42 @@
+{
+  "name": "foxplayer-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config=webpack.config.dev.js --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matecserven/foxplayer-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matecserven/foxplayer-frontend/issues"
+  },
+  "homepage": "https://github.com/matecserven/foxplayer-frontend#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.2",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.0",
+    "html-loader": "^1.3.0",
+    "html-webpack-plugin": "^4.3.0",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "tailwindcss": "^1.7.3",
+    "precss": "^4.0.0"
+  }
+}
