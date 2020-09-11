@@ -9,5 +9,6 @@ router.use(express.json());
 
 router.get('/', playlistController.get);
 router.post('/', playlistController.post);
+router.delete('/:id?', playlistController.delete);
 
 export default router;

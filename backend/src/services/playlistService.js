@@ -9,5 +9,11 @@ export const playlistService = {
   async createPlaylist(title) {
     const result = await playlistRepo.createPlaylist(title);
     return result;
-  }
+  },
+
+  async deletePlaylist(id) {
+    const result = await playlistRepo.deletePlaylist(id);
+    return result;
+  },
+  
 };
