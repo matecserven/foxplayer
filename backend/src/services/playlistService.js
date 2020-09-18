@@ -1,4 +1,5 @@
 import { playlistRepo } from '../repositories';
+import { musicParser } from '../utils/musicParser';
 
 export const playlistService = {
   async getPlaylists() {
@@ -20,5 +21,24 @@ export const playlistService = {
     const result = await playlistRepo.deletePlaylist(id);
     return result;
   },
+
+  async getPlaylistWithTracks(playlistId) {
+    try {
+      const tracks = await playlistRepo.getPlaylistWithTracks(playlistId);
+      const response =  Promise.all(tracks.map(async (track) => {
+        const trackMeta = await musicParser(track.path);
+        const trackObj = {
+          id: track.id,
+          title: trackMeta.title,
+          artist: trackMeta.artist[0],
+          duration: trackMeta.duration
+        }
+        return trackObj;
+      }));
+      return response;
+    } catch (error) {
+      throw { error };
+    }
+  }
   
 };

@@ -1,3 +1,4 @@
+import { playlistRepo } from '../repositories';
 import { playlistService } from '../services';
 
 export const playlistController = {
@@ -31,7 +32,7 @@ export const playlistController = {
         res.json({ error: 'No id provided' });
         return;
       }
-      const result = await playlistService.deletePlaylist(req.params.id);
+      const result = await playlistService.deletePlaylist(req.params.playlist_id);
 
       if (result.affectedRows === 1) {
         res.json({ message: 'Playlist deleted' });
@@ -42,5 +43,14 @@ export const playlistController = {
       next(error);
     }
   },
+
+  async getPlaylistWithTracks(req, res, next) {
+    try {
+      const result = await playlistService.getPlaylistWithTracks(req.params.playlist_id);
+      res.json(result);
+    } catch (error) {
+      next(error);
+    }
+  }
 
 };

@@ -7,10 +7,15 @@ const router = express.Router();
 router.use(cors());
 router.use(express.json());
 
-router.get('/', playlistController.get);
-router.post('/', playlistController.post);
-router.delete('/:id?', playlistController.delete);
+router.get('/playlist', playlistController.get);
+router.post('/playlist', playlistController.post);
+router.delete('/playlist/:playlist_id?', playlistController.delete);
+router.get('/playlist/:playlist_id', playlistController.getPlaylistWithTracks);
 
-router.post('/', trackController.post);
+router.post('/tracks', trackController.post);
+router.get('/tracks', trackController.get);
+router.get('/tracks/:track_id', trackController.getTrackById);
+router.post('/tracks/:playlist_id/:track_id', trackController.addTrackToPlaylist);
+router.delete('/tracks/:playlist_id/:track_id', trackController.deleteTrackFromPlaylist);
 
 export default router;
