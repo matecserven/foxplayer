@@ -1,3 +1,3 @@
-import playlistRouter from './playlist.routes';
+import apiRouter from './api.routes';
 
-export const playlist = playlistRouter;
+export const api = apiRouter;

@@ -1,40 +1,45 @@
 import { playlistService } from '../services';
 
 export const playlistController = {
-  async get(req, res, next) {
-    const result = await playlistService.getPlaylists();
-    if (result.error) {
-      next(result.error);
-      return;
-    }
-    if (result.length < 1) {
-      res.json({ message: 'No playlists' });
-    } else {
-      res.json(result);
-    }
+  // async get(req, res, next) {
+  //   try {
+  //     const result = await playlistService.getPlaylists();
+  //     res.json(result);
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // },
+
+  get(req, res, next) {
+    playlistService.getPlaylists()
+      .then(result => res.json(result))
+      .catch(error => next(error));
   },
 
   async post(req, res, next) {
-    const result = await playlistService.createPlaylist(req.body.title);
-    if (result.error) {
-      next(result.error);
-    } else {
+    try {
+      await playlistService.createPlaylist(req.body.title);
       res.json({ message: 'Playlist created' });
+    } catch (error) {
+      next(error);
     }
   },
 
   async delete(req, res, next) {
-    if (!req.params.id) {
-      res.json({ error: 'No id provided' });
-      return;
-    }
-    const result = await playlistService.deletePlaylist(req.params.id);
-    if (result.error) {
-      next(result.error);
-    } else if (result.affectedRows === 1) {
-      res.json({ message: 'Playlist deleted' });
-    } else {
-      res.json({ message: "Playlist can't be deleted" });
+    try {
+      if (!req.params.id) {
+        res.json({ error: 'No id provided' });
+        return;
+      }
+      const result = await playlistService.deletePlaylist(req.params.id);
+
+      if (result.affectedRows === 1) {
+        res.json({ message: 'Playlist deleted' });
+      } else {
+        res.json({ message: "Playlist can't be deleted" });
+      }
+    } catch (error) {
+      next(error);
     }
   },
 

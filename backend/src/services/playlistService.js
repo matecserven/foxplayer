@@ -2,8 +2,13 @@ import { playlistRepo } from '../repositories';
 
 export const playlistService = {
   async getPlaylists() {
-    const playlists = await playlistRepo.getPlaylists();
-    return playlists;
+    // try {
+    //   const playlists = await playlistRepo.getPlaylists();
+    //   return playlists;
+    // } catch (error) {
+    //   throw { error };
+    // }
+    return await playlistRepo.getPlaylists();
   },
 
   async createPlaylist(title) {
