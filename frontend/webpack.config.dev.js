@@ -8,7 +8,7 @@ module.exports = {
     contentBase: './dist',
     hot: true,
   },
-  entry: './src/index.js',
+  entry: ['@babel/polyfill', './src/js/index.js', './src/js/audioControl.js'],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -54,6 +54,10 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader',
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'file-loader',
       },
     ],
   },

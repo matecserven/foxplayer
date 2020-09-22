@@ -1,4 +1,5 @@
 import { trackService } from '../services';
+import { appDir } from '../utils/config';
 
 export const trackController = {
   get(req, res, next) {
@@ -7,8 +8,8 @@ export const trackController = {
       .catch(error => next(error));
   },
 
-  getTrackById(req, res, next) {
-    trackService.getTrackById(req.params.track_id)
+  getTrackDataById(req, res, next) {
+    trackService.getTrackDataById(req.params.track_id)
       .then(result => res.json(result))
       .catch(error => next(error))
   },
@@ -29,5 +30,12 @@ export const trackController = {
     trackService.deleteTrackFromPlaylist(req.params.playlist_id, req.params.track_id)
       .then(result => res.json(result))
       .catch(error => next(error));
-  }
+  },
+
+  getTrackFile(req, res, next) {
+    trackService.getTrackPathById(req.params.track_id)
+      .then(result => res.sendFile(`${appDir}/static/tracks/${result}`))
+      .catch(error => next(error));
+  },
+
 }

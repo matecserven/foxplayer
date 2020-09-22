@@ -1,12 +1,27 @@
 import { trackRepo } from '../repositories';
-import { musicParser } from '../utils/musicParser';
+import { musicParser, tracklistParser } from '../utils/musicParser';
 
 export const trackService = {
   async getTracks() {
-    return await trackRepo.getAllTracks();
+    try {
+      const trackList =  await trackRepo.getAllTracks();
+      const trackListWithMeta = await tracklistParser(trackList);
+      return trackListWithMeta;
+    } catch (error) {
+      throw { error }
+    }
   },
 
-  async getTrackById(trackId) {
+  async getTrackPathById(trackId) {
+    try {
+      const track = await trackRepo.getTrackById(trackId);
+      return track[0].path;
+    } catch (err) {
+      throw { err };
+    }
+  },
+
+  async getTrackDataById(trackId) {
     try {
       const track = await trackRepo.getTrackById(trackId);
       const meta = await musicParser(track[0].path);

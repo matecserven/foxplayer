@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fox player</title>
 </head>
+
 <body class="h-screen">
   <div class="mainContainer">
     <div class="logo"></div>
     <div class="trackInfo"></div>
     <div class="playList"></div>
-    <div class="trackList"></div> 
-    <div class="controlPanel"></div>
+    <div class="trackList"></div>
+    <div class="controlPanel">
+      <audio type="audio/mpeg">
+      </audio>
+      <img class="control rewind" src="img/rewind.svg">
+      <img class="control pause" src="img/pause.svg">
+      <img class="control play" src="img/play.svg">
+      <img class="control forward" src="img/forward.svg">
+      <div id="slider"></div>
+      <img class="control shuffle" src="img/shuffle.svg">
+      <img class="control volume" src="img/volume.svg"> 
+    </div>
   </div>
 </body>
+
 </html>

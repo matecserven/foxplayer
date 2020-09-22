@@ -14,8 +14,9 @@ router.get('/playlist/:playlist_id', playlistController.getPlaylistWithTracks);
 
 router.post('/tracks', trackController.post);
 router.get('/tracks', trackController.get);
-router.get('/tracks/:track_id', trackController.getTrackById);
+router.get('/tracks/:track_id', trackController.getTrackDataById);
 router.post('/tracks/:playlist_id/:track_id', trackController.addTrackToPlaylist);
 router.delete('/tracks/:playlist_id/:track_id', trackController.deleteTrackFromPlaylist);
+router.get('/tracks/file/:track_id', trackController.getTrackFile);
 
 export default router;

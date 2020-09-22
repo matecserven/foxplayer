@@ -2,14 +2,6 @@ import { playlistRepo } from '../repositories';
 import { playlistService } from '../services';
 
 export const playlistController = {
-  // async get(req, res, next) {
-  //   try {
-  //     const result = await playlistService.getPlaylists();
-  //     res.json(result);
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // },
 
   get(req, res, next) {
     playlistService.getPlaylists()

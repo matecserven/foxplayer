@@ -19,11 +19,21 @@
 }
 
 .playList, .trackList {
-  @apply h-64 h-;
+  @apply h-64;
 }
 
 .controlPanel {
   @apply w-full h-24;
+  @apply flex flex-row justify-around items-center;
+}
+
+.control {
+  @apply h-8 w-8;
+}
+
+.trackRow {
+  @apply h-10;
+  @apply flex flex-row items-center justify-around;
 }
 
 @screen sm {

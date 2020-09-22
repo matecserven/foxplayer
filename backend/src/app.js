@@ -5,6 +5,7 @@ import errorHandler from './middlewares/error-handler';
 
 const app = express();
 
+app.use(express.static('static'));
 app.use(morgan('tiny'));
 
 app.use('/api', api);
